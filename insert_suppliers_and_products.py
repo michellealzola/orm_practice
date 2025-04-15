@@ -18,8 +18,5 @@ session.commit()
 
 print('Suppliers and Products inserted')
 
-# query products with their supplier
-products = session.query(Product).all()
-for product in products:
-    print(f'{product.name} supplied by {product.supplier.name}')
+
 

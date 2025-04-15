@@ -24,7 +24,7 @@ class Product(Base):
     __tablename__ = 'products'
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(100))
+    name = Column(String(100), unique=True)
     category = Column(String(50))
     price = Column(Float)
     quantity = Column(Integer)
