@@ -1,0 +1,247 @@
+Excellent! Here's a list of **5 real-world ORM exercises** that cover everything we've discussed so far — including:
+
+- Table creation
+- Inserting data
+- Querying with filters
+- Updating and deleting
+- Relationships (1-to-many)
+- JOINs, eager loading
+- Expected output (but **no solutions**, as requested)
+
+---
+
+## ✅ Exercise 1: Product Inventory and Suppliers
+
+**Objective:**
+Manage a product inventory and supplier database. Each product is supplied by one supplier. Insert data, then retrieve and filter using joins.
+
+### Dataset:
+
+**Suppliers**
+
+| name            | contact_email            |
+|-----------------|--------------------------|
+| Tech Source     | tech@source.com          |
+| Office Hub      | contact@officehub.com    |
+
+**Products**
+
+| name              | category      | price | quantity | supplier         |
+|-------------------|---------------|-------|----------|------------------|
+| Keyboard          | Electronics   | 29.99 | 50       | Tech Source      |
+| Office Chair      | Furniture     | 89.50 | 20       | Office Hub       |
+| Monitor 24"       | Electronics   | 199.00| 10       | Tech Source      |
+
+### Tasks:
+
+1. Create tables and define relationships
+2. Insert the above records
+3. Print each product with its supplier name using a JOIN
+4. List all products with quantity < 30
+5. Update the price of the "Office Chair" to 95.00
+6. Delete the "Keyboard" from inventory
+
+### ✅ Expected Output:
+```
+Monitor 24" ➜ Tech Source
+Office Chair ➜ Office Hub
+
+Low stock:
+Office Chair
+Monitor 24"
+
+Updated: Office Chair $95.0
+Deleted: Keyboard
+```
+
+---
+
+## ✅ Exercise 2: Students and Courses (with 1-to-Many)
+
+**Objective:**
+Track students and the courses they’re enrolled in. Each student can be enrolled in multiple courses.
+
+### Dataset:
+
+**Students**
+
+| name          | email                 |
+|---------------|------------------------|
+| Alice Ramos   | alice@email.com        |
+| Jason Long    | jason@email.com        |
+
+**Courses**
+
+| title              | credits | student        |
+|--------------------|---------|----------------|
+| Python Basics      | 3       | Alice Ramos    |
+| Data Structures    | 4       | Alice Ramos    |
+| Web Dev 101        | 2       | Jason Long     |
+
+### Tasks:
+
+1. Create tables and define relationships
+2. Insert data and use relationships
+3. Get all courses with the name of the enrolled student (JOIN)
+4. Use eager loading to fetch students with their courses
+5. Count how many courses each student is taking
+
+### ✅ Expected Output:
+```
+Python Basics ➜ Alice Ramos
+Web Dev 101 ➜ Jason Long
+
+Alice Ramos is taking 2 courses.
+Jason Long is taking 1 course.
+```
+
+---
+
+## ✅ Exercise 3: Employees and Departments
+
+**Objective:**
+Create an internal HR system that manages employees and departments. Each employee belongs to one department.
+
+### Dataset:
+
+**Departments**
+
+| name             |
+|------------------|
+| IT               |
+| HR               |
+| Marketing        |
+
+**Employees**
+
+| name          | salary | department   |
+|---------------|--------|--------------|
+| Sarah Dean    | 55000  | IT           |
+| Mike Jordan   | 52000  | HR           |
+| Lana Cruz     | 49000  | Marketing    |
+| Alex Vaughn   | 58000  | IT           |
+
+### Tasks:
+
+1. Create models for employees and departments
+2. Insert data and define relationships
+3. Print each department and list all employees in it
+4. List all employees with salary > 50000
+5. Update Lana's salary to 51000
+6. Delete Mike Jordan from the system
+
+### ✅ Expected Output:
+```
+IT Department:
+ - Sarah Dean
+ - Alex Vaughn
+
+HR Department:
+ - Mike Jordan
+
+Marketing Department:
+ - Lana Cruz
+
+Updated: Lana Cruz ➜ $51000
+Deleted: Mike Jordan
+```
+
+---
+
+## ✅ Exercise 4: Books and Authors (1-to-Many, JOIN + Filter)
+
+**Objective:**
+Manage a book collection with their authors. Each author can write multiple books.
+
+### Dataset:
+
+**Authors**
+
+| name             | country     |
+|------------------|-------------|
+| J.K. Rowling     | UK          |
+| Paulo Coelho     | Brazil      |
+
+**Books**
+
+| title                 | year | author         |
+|------------------------|------|----------------|
+| The Alchemist          | 1988 | Paulo Coelho   |
+| Brida                  | 1990 | Paulo Coelho   |
+| Harry Potter 1         | 1997 | J.K. Rowling   |
+| Harry Potter 2         | 1998 | J.K. Rowling   |
+
+### Tasks:
+
+1. Create the models and tables
+2. Insert the data
+3. Query: Show all books and their authors
+4. Filter: Show all books written after 1990
+5. Count how many books each author wrote
+6. Use eager loading to preload authors with their books
+
+### ✅ Expected Output:
+```
+Harry Potter 1 ➜ J.K. Rowling
+The Alchemist ➜ Paulo Coelho
+
+Books after 1990:
+ - Harry Potter 1
+ - Brida
+ - Harry Potter 2
+
+J.K. Rowling wrote 2 books.
+Paulo Coelho wrote 2 books.
+```
+
+---
+
+## ✅ Exercise 5: Customers and Orders (with JOIN and Filters)
+
+**Objective:**
+Simulate a store's order history. Each customer can place multiple orders.
+
+### Dataset:
+
+**Customers**
+
+| name         | email              |
+|--------------|--------------------|
+| Emma Stone   | emma@shop.com      |
+| Liam Smith   | liam@shop.com      |
+
+**Orders**
+
+| product       | total | customer     |
+|---------------|--------|--------------|
+| Headphones    | 45.00 | Emma Stone   |
+| USB Drive     | 15.50 | Emma Stone   |
+| Laptop        | 899.99| Liam Smith   |
+
+### Tasks:
+
+1. Create customer and order tables
+2. Insert all records
+3. Show each order with the customer name
+4. Filter all orders greater than $100
+5. Delete one order (e.g., USB Drive)
+6. Count total orders for each customer
+
+### ✅ Expected Output:
+```
+Orders:
+ - Headphones ➜ Emma Stone
+ - USB Drive ➜ Emma Stone
+ - Laptop ➜ Liam Smith
+
+Orders > $100:
+ - Laptop ➜ Liam Smith
+
+Deleted: USB Drive
+Emma Stone placed 1 orders
+Liam Smith placed 1 orders
+```
+
+---
+
+Let me know which one you want to start with — and I’ll help if you need setup, testing hints, or want to add pagination, search, or export later on!
